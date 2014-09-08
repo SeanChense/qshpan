@@ -21,6 +21,7 @@ import org.qinshuihepan.bbs.api.Api;
 import org.qinshuihepan.bbs.data.Request;
 import org.qinshuihepan.bbs.util.MD5;
 import org.qinshuihepan.bbs.util.TaskUtils;
+import org.qinshuihepan.bbs.util.Utils;
 import org.qinshuihepan.bbs.util.sharedpreference.Athority;
 
 import java.io.IOException;
@@ -56,7 +57,6 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        confirm = (Button)findViewById(R.id.confirm);
         ButterKnife.inject(this);
         mContext = this;
         ActionBar actionBar = getActionBar();
@@ -68,6 +68,11 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 username = usernameText.getText().toString();
                 password = passwordText.getText().toString();
+                if(!Utils.isNetworkOn(mContext)){
+                	Toast.makeText(mContext, getString(R.string.offline), Toast.LENGTH_SHORT)
+                    .show();
+                	return;
+                }
                 if (username.equals("")) {
                     Toast.makeText(mContext, "用户名不能为空！", Toast.LENGTH_SHORT)
                             .show();
@@ -110,7 +115,8 @@ public class LoginActivity extends Activity {
 
     }
 
-    private boolean isLoginSuccess() {
+
+	private boolean isLoginSuccess() {
         Document doc = null;
         String formhash = null;
         String loginaction = null;
@@ -154,5 +160,15 @@ public class LoginActivity extends Activity {
         }
         return false;
     }
+
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if (progressDialog != null) {
+			progressDialog.dismiss();
+			progressDialog = null;
+	    }
+	}
 
 }

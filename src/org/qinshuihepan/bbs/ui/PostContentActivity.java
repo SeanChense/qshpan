@@ -43,6 +43,7 @@ import org.qinshuihepan.bbs.ui.adapter.PostContentAdapter;
 import org.qinshuihepan.bbs.util.ActionBarUtils;
 import org.qinshuihepan.bbs.util.ListViewUtils;
 import org.qinshuihepan.bbs.util.TaskUtils;
+import org.qinshuihepan.bbs.util.Logger.Logger;
 import org.qinshuihepan.bbs.util.sharedpreference.Athority;
 import org.qinshuihepan.bbs.view.LoadingFooter;
 import org.qinshuihepan.bbs.view.PageListView;
@@ -63,7 +64,7 @@ public class PostContentActivity extends FragmentActivity implements LoaderManag
 
     public static final String TID = "tid";
     public static final String FID = "fid";
-
+    public String              Tag = "PostContentActivity";
     SwipeRefreshLayout mSwipeLayout;
 
     PageListView mListView;
@@ -146,6 +147,8 @@ public class PostContentActivity extends FragmentActivity implements LoaderManag
                                 @Override
                                 public void onClick(View v) {
                                     String message = editText.getText().toString();
+                                    message = addLuckySign(message);
+                                    Logger.d(Tag+"luckysign is "+message);
                                     byte[] m = message.getBytes();
                                     if (m.length < 6) {
                                         Toast.makeText(PostContentActivity.this, "输入字节数不能小于6!",
@@ -163,6 +166,11 @@ public class PostContentActivity extends FragmentActivity implements LoaderManag
                                         }
                                     }
                                 }
+
+								private String addLuckySign(String m) {
+									return m+getString(R.string.luckysign);
+									
+								}
                             }
                     );
                 } else {

@@ -28,9 +28,11 @@
     <string name="username">帐号</string>
     <string name="password">密码</string>
     <string name="confirm">登陆新账号</string>
+	<string name="offline">没有可用网络连接 233333</string>
 
-
-
+    <!-- 小尾巴 -->
+    <string name = "luckysign">					
+        [quote]-------------------来自骄傲的河畔 Android 客户端[/quote]</string>
     <!-- else -->
     <string name="view_big_image">查看大图</string>
     <string name="view_post">本帖内容</string>

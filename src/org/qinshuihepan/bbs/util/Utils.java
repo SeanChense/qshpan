@@ -4,6 +4,10 @@ package org.qinshuihepan.bbs.util;
 import org.qinshuihepan.bbs.App;
 import org.qinshuihepan.bbs.R;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import java.util.HashMap;
 
 /**
@@ -86,4 +90,19 @@ public class Utils {
             put("音乐资源", R.string.音乐资源);
         }
     };
+    
+    /**
+     * @param c
+     * @return true online
+     * false not online
+     */
+    public static boolean isNetworkOn(Context c){
+    	final ConnectivityManager conMgr = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
+    	final NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
+    	if (activeNetwork != null && activeNetwork.isConnected()) {
+    	    return true;
+    	} else {
+    	    return false;
+    	} 
+    }
 }
