@@ -1,5 +1,6 @@
 #fork 自 [https://github.com/fenjuly/Qshp](https://github.com/fenjuly/Qshp)
 
+本来应该直接 fork 过来的，但是因为种种原因未能如愿。
 
 Qshp
 ====
