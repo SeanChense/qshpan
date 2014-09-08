@@ -32,7 +32,7 @@
 
     <!-- 小尾巴 -->
     <string name = "luckysign">					
-        [quote]-------------------来自骄傲的河畔 Android 客户端[/quote]</string>
+        [quote]-------------------来自骄傲的河畔  Android 客户端[/quote]</string>
     <!-- else -->
     <string name="view_big_image">查看大图</string>
     <string name="view_post">本帖内容</string>

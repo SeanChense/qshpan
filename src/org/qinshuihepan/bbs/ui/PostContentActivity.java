@@ -62,8 +62,9 @@ import butterknife.InjectView;
  */
 public class PostContentActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<Cursor>, SwipeRefreshLayout.OnRefreshListener {
 
-    public static final String TID = "tid";
-    public static final String FID = "fid";
+    public static final String TID 	    	= "tid";
+    public static final String FID		    = "fid";
+    public static final String TITLE	    = "title";
     public String              Tag = "PostContentActivity";
     SwipeRefreshLayout mSwipeLayout;
 
@@ -72,7 +73,8 @@ public class PostContentActivity extends FragmentActivity implements LoaderManag
 
     private int tid;
     private int fid;
-
+    private String title;
+    
     private ItemsDataHelper mtDataHelper;
     private ImagesDataHelper miDataHelper;
     private PostContentAdapter mAdapter;
@@ -95,9 +97,10 @@ public class PostContentActivity extends FragmentActivity implements LoaderManag
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitle(R.string.view_post);
         tid = getIntent().getExtras().getInt(TID);
         fid = getIntent().getExtras().getInt(FID);
+        title = getIntent().getExtras().getString(TITLE) != null?getIntent().getExtras().getString(TITLE):"";
+        setTitle(title);
         setContentView(R.layout.post_layout);
         mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
         mListView = (PageListView) findViewById(R.id.listView);

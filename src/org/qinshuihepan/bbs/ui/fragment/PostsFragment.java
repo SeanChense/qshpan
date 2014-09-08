@@ -129,6 +129,10 @@ public class PostsFragment extends Fragment implements LoaderManager.LoaderCallb
         if (!mSwipeLayout.isRefreshing() && (1 == next)) {
             mSwipeLayout.setRefreshing(true);
         }
+        if (!Utils.isNetworkOn(getActivity())){
+        	Toast.makeText(getActivity(), getString(R.string.offline), 1000).show();
+        	return;
+        }
         final Integer tempCategoryID = Integer.valueOf(App.getContext().getResources().getString(Integer.valueOf(Utils.FORUM_CATEGORY_ID.get(mCategory))));
         if (tempCategoryID.equals(10001) || tempCategoryID.equals(10002) || tempCategoryID.equals(10003)) {
             TaskUtils.executeAsyncTask(new AsyncTask<String, Void, Boolean>() {
