@@ -69,6 +69,7 @@ public class PostsAdapter extends CursorAdapter {
                 Intent intent = new Intent(mContext, PostContentActivity.class);
                 intent.putExtra(PostContentActivity.FID, post.fid);
                 intent.putExtra(PostContentActivity.TID, post.tid);
+                intent.putExtra(PostContentActivity.TITLE, post.title);
                 mContext.startActivity(intent);
             }
         });
